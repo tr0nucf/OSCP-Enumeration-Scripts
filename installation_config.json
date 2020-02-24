@@ -1,0 +1,45 @@
+{
+  "utilities_list": [
+    {
+      "update": "apt-get update -y"
+    },
+    {
+      "nmap": "apt-get install nmap"
+    },
+    {
+      "gobuster": "apt-get install gobuster"
+    },
+    {
+      "dirb": "apt-get install dirb"
+    },
+    {
+      "nikto": "apt-get install nikto"
+    },
+    {
+      "terminator": "apt-get install terminator"
+    },
+    {
+      "git": "apt-get install git"
+    },
+    {
+      "seclists": "apt-get install seclists"
+    },
+    {
+      "enum4linux": "apt-get install enum4linux"
+    },
+    {
+      "curl": "apt-get install curl"
+    }
+  ],
+  "utilities_directories": [
+    {
+      "dirsearch.py": "git clone https://github.com/maurosoria/dirsearch.git"
+    },
+    {
+      "/usr/share/nishang/": "apt-get install nishang"
+    },
+    {
+      "PayloadsAllTheThings": "git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git"
+    }
+  ]
+}
