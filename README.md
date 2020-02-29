@@ -1,4 +1,8 @@
 # OSCP-Enumeration-Scripts
+
+If you want to contribute or have ideas on how to improve this project 
+please email me at cdedmondson@protonmail.com
+
 OSCP enumeration and installation scripts (a work in progress)
 
 1. Run all scripts as root 
