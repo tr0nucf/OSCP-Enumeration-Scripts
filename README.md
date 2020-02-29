@@ -3,7 +3,9 @@
 If you want to contribute or have ideas on how to improve this project 
 please email me at cdedmondson@protonmail.com
 
-# OSCP enumeration and installation scripts (a work in progress)
+OSCP enumeration and installation scripts (a work in progress)
+
+# Instructions
 
 1. Run all scripts as root 
 2. Download utilities_check.py in the same directory as installation_config.json
