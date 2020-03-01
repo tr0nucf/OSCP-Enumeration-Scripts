@@ -1,7 +1,6 @@
 # OSCP-Enumeration-Scripts
 
-If you want to contribute or have ideas on how to improve this project 
-please email me at cdedmondson@protonmail.com
+If you'd like to contribute to this project please contact me at cdedmondson@protonmail.com
 
 # Instructions
 
