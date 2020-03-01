@@ -10,5 +10,3 @@ If you'd like to contribute to this project please contact me at cdedmondson@pro
 4. Run (python3 utilities_check.py)
 5. Accept all prompts (-y)
 6. Run pycannon.py or web_enumeration.py (python3 <script>)
-
-Screenshot_2020-03-01_14-50-57.png
