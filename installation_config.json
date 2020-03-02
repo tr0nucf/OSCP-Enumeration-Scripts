@@ -29,6 +29,9 @@
     },
     {
       "curl": "apt-get install curl"
+    },
+    {
+      "whatweb": "apt-get install whatweb"
     }
   ],
   "utilities_directories": [
@@ -40,6 +43,9 @@
     },
     {
       "PayloadsAllTheThings": "git clone https://github.com/swisskyrepo/PayloadsAllTheThings.git"
+    },
+    {
+      "python-pty-shells": "git clone https://github.com/infodox/python-pty-shells.git"
     }
   ]
 }
