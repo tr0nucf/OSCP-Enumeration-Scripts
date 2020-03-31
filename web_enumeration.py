@@ -1,15 +1,24 @@
 import subprocess
 import os
 import socket
+from colorama import Fore, Style
 
 
 def get_current_directory():
     return os.getcwd()
 
 
+def progress(tool):
+    print(Style.BRIGHT + Fore.BLUE + f'{tool} scanning in progress' + Style.RESET_ALL)
+
+
+def finished(tool):
+    print(Style.BRIGHT + Fore.MAGENTA + f'{tool} Finished!' + Style.RESET_ALL)
+
+
 def prepare_scan_results_file(ip, port):
     file_path = get_current_directory()
-    file_name = f"{ip}_port{port}_scan_results"
+    file_name = f"{ip}_port_{port}_scan_results"
     complete_path = os.path.join(file_path, file_name + ".txt")
     return complete_path
 
@@ -22,8 +31,7 @@ def is_valid_ip():
             if socket.gethostbyname(ip) == ip:
                 break
         except socket.gaierror:
-            print("Something is wrong")
-
+            print(Fore.RED + 'Something is wrong' + Style.RESET_ALL)
     return ip
 
 
@@ -33,12 +41,12 @@ def is_valid_port():
         try:
             port = int(input("[*] Enter port of host:"))
         except ValueError:
-            print("Error: expect an integer. Try again.")
+            print(Fore.RED + 'Error: expect an integer. Try again.' + Style.RESET_ALL)
             continue
         if port >= 1 and port <= 65535:
             break
         else:
-            print("Port must between range 1 >= port <= 65535")
+            print(Fore.CYAN + 'Port must between range 1 >= port <= 65535' + Style.RESET_ALL)
             continue
 
     return port
@@ -57,38 +65,44 @@ def get_threads():
         try:
             threads = int(input("[*] Enter number of threads Max of 50:"))
         except ValueError:
-            print("Error: expect an integer. Try again.")
+            print(Fore.RED + 'Error: expect an integer. Try again.' + Style.RESET_ALL)
             continue
         if threads >= 1 and threads <= 50:
             break
         else:
-            print("Thread count must be between range 1 >= port <= 50")
+            print(Fore.CYAN + 'Thread count must be between range 1 >= port <= 50' + Style.RESET_ALL)
             continue
 
     return threads
 
 
 def whatweb(ip, port, file):
+    progress('Whatweb')
     if not port_443(port):
         whatweb = f"whatweb -v -a 1 http://{ip}:{port} > {file}"
     else:
         whatweb = f"whatweb -v -a 1 https://{ip}:{port} > {file}"
 
     subprocess.run(whatweb, shell=True)
+    finished('Whatweb')
 
 
 def dirsearch(ip, port, threads, file):
+    progress('Dirsearch')
     if not port_443(port):
         dirsearch = f"/opt/dirsearch/./dirsearch.py -u http://{ip}:{port} -e php,txt,pl,sh,asp,aspx,html,json,py,cfm,rb,cgi -r -t {threads} >> {file}"
     else:
         dirsearch = f"/opt/dirsearch/./dirsearch.py -u https://{ip}:{port} -e php,txt,pl,sh,asp,aspx,html,json,py,cfm,rb,cgi -r -t {threads} >> {file}"
 
     subprocess.run(dirsearch, shell=True)
+    finished('Dirsearch')
 
 
 def nikto(ip, port, file):
+    progress('Nikto')
     nikto = f"nikto -host {ip} -p {port} >> {file}"
     subprocess.run(nikto, shell=True)
+    finished('Nikto')
 
 
 def gobuster(ip, port, threads, file):
