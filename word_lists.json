@@ -1,0 +1,72 @@
+{
+  "apache": [
+    {
+      "common": "/usr/share/seclists/Discovery/Web-Content/apache.txt"
+    },
+    {
+      "fuzz": "/usr/share/seclists/Discovery/Web-Content/Apache.fuzz.txt"
+    },
+    {
+      "vulns": "/usr/share/wordlists/dirb/vulns/apache.txt"
+    }
+  ],
+  "apache_tomcat": [
+    {
+      "common": "/usr/share/seclists/Discovery/Web-Content/ApacheTomcat.fuzz.txt"
+    }
+  ],
+  "wordpress": [
+    {
+      "themes": "/usr/share/seclists/Discovery/Web-Content/CMS/wp-themes.fuzz.txt"
+    },
+    {
+      "plugins": "/usr/share/seclists/Discovery/Web-Content/CMS/wp-plugins.fuzz.txt"
+    },
+    {
+      "fuzz": "/usr/share/seclists/Discovery/Web-Content/CMS/wordpress.fuzz.txt"
+    }
+  ],
+  "joomla": [
+    {
+      "themes": "/usr/share/seclists/Discovery/Web-Content/CMS/joomla-themes.fuzz.txt"
+    }
+  ],
+  "coldfusion": [
+    {
+      "fuzz": "/usr/share/seclists/Discovery/Web-Content/CMS/ColdFusion.fuzz.txt"
+    },
+    {
+      "vulns": "/usr/share/wordlists/dirb/vulns/coldfusion.txt"
+    }
+  ],
+  "drupal": [
+    {
+      "fuzz": "/usr/share/seclists/Discovery/Web-Content/CMS/drupal-themes.fuzz.txt"
+    }
+  ],
+  "dirb": [
+    {
+      "big": "/usr/share/wordlists/dirb/big.txt"
+    },
+    {
+      "common": "/usr/share/wordlists/dirb/common.txt"
+    }
+  ],
+  "dirbuster": [
+    {
+      "lower_case_small": "/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt"
+    },
+    {
+      "lower_case_medium": "/usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt"
+    },
+    {
+      "small": "/usr/share/wordlists/dirbuster/directory-list-2.3-small.txt"
+    },
+    {
+      "medium": "/usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt"
+    },
+    {
+      "standard": "/usr/share/wordlists/dirbuster/directory-list-1.0.txt"
+    }
+  ]
+}
